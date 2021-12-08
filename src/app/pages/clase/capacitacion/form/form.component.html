@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{title}}Capacitacion</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formGroup">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Capacitacion</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="nomCapaciatacion">
+        <span class="form-text text-danger" *ngIf="validaForm('nomCapaciatacion')">Ingrese nombre</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">modulos</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="modulos">
+        <span class="form-text text-danger" *ngIf="validaForm('modulos')">Ingrese modulo</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">sesiones</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="espeLugarRescate">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">materiales</label>
+      <div class="col-sm-9">
+        <input type="date" class="form-control" formControlName="materiales">
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" *ngIf="title === 'Nueva'" class="btn btn-primary" (click)="save(formGroup.value)">Guardar</button>
+  <button type="button" *ngIf="title === 'Modificar'" class="btn btn-primary" (click)="update(formGroup.value)">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancelar</button>
+</div>
+<div class="container">
+  <div class="row align-items-md-center">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/paimon-1/sticker_10.png?4719dfd4ead6e5b35d544e7fa0421023&d=200x200" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">AGREGA UNA CAPACITACION</h5>
+  </div>
+</div>
+</div>
+</div>
