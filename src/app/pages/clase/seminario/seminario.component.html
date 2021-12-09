@@ -1,1 +1,28 @@
-<p>seminario works!</p>
+<button type="button" class="btn btn-primary float-right mt-3 mb-3" (click)="openModal()">Nuevo</button>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Pedido de Oracion</th>
+      <th colspan="2" class="text-center">Opciones</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let seminario of seminario;">
+    <tr>
+      <td>{{seminario.idSeminario}}</td>
+      <td>{{seminario.nomseminario}}</td>
+      <td>{{seminario.semiFecha}}</td>
+      <td>{{seminario.servicioEspiritual}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-warning" (click)="openModalEdit(seminario)">Editar</button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="btn btn-danger" (click)="onDelete(seminario)">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -28,6 +28,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/clase/clase.module')
           .then(m => m.ClaseModule)
       }
+
     ]
   },
   {

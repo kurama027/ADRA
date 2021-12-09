@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{title}}Seminario</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formGroup">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Seminario</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="nomseminario">
+        <span class="form-text text-danger" *ngIf="validaForm('nomseminario')">Nombre de seminario</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">semifecha</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" formControlName="semifecha">
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Oracion</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="servicioEspiritual">
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" *ngIf="title === 'Nuevo'" class="btn btn-primary" (click)="save(formGroup.value)">Guardar</button>
+  <button type="button" *ngIf="title === 'Modificar'" class="btn btn-primary" (click)="update(formGroup.value)">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancelar</button>
+</div>
+<div class="container">
+  <div class="row align-items-md-center">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/genshin-impact-klee/sticker_22.png?8c2dc4662d77301e003b390edf8d38b3&d=200x200" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">AGREGA UN seminario</h5>
+  </div>
+</div>
+</div>
+</div>

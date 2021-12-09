@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CapacitacionService } from 'src/app/providers/services/capacitacion.service';
+import { SeminarioService } from 'src/app/providers/services/seminario.service';
 
 @Component({
   selector: 'app-form',
@@ -10,17 +10,16 @@ import { CapacitacionService } from 'src/app/providers/services/capacitacion.ser
 })
 export class FormComponent implements OnInit {
 
-  especie: any;
+  seminario: any;
   @Input() item: any;
-  @Input() id_capaciatacion: any;
+  @Input() id_seminario: any;
   @Input() title: any;
-  idCapacitacion: string;
+  idSeminario: string;
   isUpdating: boolean;
-
   formGroup: FormGroup;
   constructor(public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private capacitacionService: CapacitacionService) { }
+    private seminarioService: SeminarioService) { }
 
   ngOnInit(): void {
     this.inicio();
@@ -29,7 +28,7 @@ export class FormComponent implements OnInit {
       this.updateData();
     } else {
       this.item = [];
-      this.id_capaciatacion = '';
+      this.id_seminario = '';
     }
     console.log(this.item);
   }
@@ -37,14 +36,12 @@ export class FormComponent implements OnInit {
   private inicio(): any {
     const controls = {
       // idEmployee: ['', [Validators.required]],
-      nomCapaciatacion: ['', [Validators.required]],
-      modulos: ['', [Validators.required]],
-      sesiones: [''],
-      materiales: [''],
+      nomseminario: ['', [Validators.required]],
+      semiFecha: ['', [Validators.required]],
+      servicioEspiritual: [''],
 
     };
     this.formGroup = this.formBuilder.group(controls);
-
 }
 
 save(name: any): void {
@@ -54,12 +51,12 @@ save(name: any): void {
   }
   // this.formGroup.reset();
   const save: any = {
-    nomCapaciatacion:name.nomCapaciatacion,
-    modulos:name.modulos,
-    sesiones:name.sesiones,
-    materiales:name.materiales
+    nomseminario:name.nomseminario,
+    semiFecha:name.semiFecha,
+    servicioEspiritual:name.servicioEspiritual
   };
-  this.capacitacionService.add$(save).subscribe(response => {
+
+  this.seminarioService.add$(save).subscribe(response => {
     if (response.success) {
       this.activeModal.close({ success: true, message: response.message });
     } else {
@@ -74,13 +71,12 @@ update(name: any): void {
   }
   // this.formGroup.reset();
   const save: any = {
-    idCapacitacion:this.idCapacitacion,
-    nomCapaciatacion:name.nomCapaciatacion,
-    modulos:name.modulos,
-    sesiones:name.sesiones,
-    materiales:name.materiales
+    idSeminario:this.idSeminario,
+    nomseminario:name.nomseminario,
+    semiFecha:name.semiFecha,
+    servicioEspiritual:name.ServicioEspiritual,
   }
-  this.capacitacionService.update$(this.idCapacitacion, save).subscribe(response => {
+  this.seminarioService.update$(this.idSeminario, save).subscribe(response => {
     if (response.success) {
       this.activeModal.close({ success: true, message: response.message });
     } else {
@@ -91,12 +87,11 @@ update(name: any): void {
 updateData(): any {
   const data = this.item;
   this.isUpdating = true;
-  this.idCapacitacion = data.idCapacitacion;
+  this.idSeminario = data.idSeminario;
   this.formGroup.patchValue({
-    nomCapaciatacion: data.nomCapaciatacion,
-    modulos: data.modulos,
-    sesiones: data.sesiones,
-    materiales: data.materiales
+    nomseminario:data.nomseminario,
+    semiFecha:data.semiFecha,
+    servicioEspiritual:data.servicioEspiritual,
   });
 }
 

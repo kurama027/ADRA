@@ -6,6 +6,7 @@ import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {AuthService} from "../providers/services/auth.service";
 import { SharedModule } from '../shared/shared.module';
+import { FooterComponent } from './main-page/footer/footer.component';
 
 const BASE_MODULES = [
   CommonModule,
@@ -18,6 +19,7 @@ const BASE_MODULES = [
 const CORE_COMPONENTS: any[] = [
   MainPageComponent,
   HeaderComponent,
+  FooterComponent
 ];
 
 @NgModule({
