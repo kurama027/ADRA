@@ -5,8 +5,8 @@
     <tr>
       <th>#</th>
       <th>Nombre</th>
+      <th>Oracion</th>
       <th>Fecha</th>
-      <th>Pedido de Oracion</th>
       <th colspan="2" class="text-center">Opciones</th>
     </tr>
     </thead>
@@ -14,8 +14,8 @@
     <tr>
       <td>{{seminario.idSeminario}}</td>
       <td>{{seminario.nomseminario}}</td>
-      <td>{{seminario.semiFecha}}</td>
       <td>{{seminario.servicioEspiritual}}</td>
+      <td>{{seminario.semiFecha | date: 'dd/MM/yyyy'}}</td>
       <td class="text-center">
         <button type="button" class="btn btn-warning" (click)="openModalEdit(seminario)">Editar</button>
       </td>

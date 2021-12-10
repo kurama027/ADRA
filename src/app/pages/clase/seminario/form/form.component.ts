@@ -16,10 +16,11 @@ export class FormComponent implements OnInit {
   @Input() title: any;
   idSeminario: string;
   isUpdating: boolean;
+
   formGroup: FormGroup;
   constructor(public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private seminarioService: SeminarioService) { }
+    private SeminarioService: SeminarioService) { }
 
   ngOnInit(): void {
     this.inicio();
@@ -37,26 +38,27 @@ export class FormComponent implements OnInit {
     const controls = {
       // idEmployee: ['', [Validators.required]],
       nomseminario: ['', [Validators.required]],
-      semiFecha: ['', [Validators.required]],
+      semiFecha: [''],
       servicioEspiritual: [''],
 
     };
     this.formGroup = this.formBuilder.group(controls);
+
 }
 
 save(name: any): void {
+  console.log("Validación de formulario: ...", this.formGroup.valid);
   if (this.formGroup.invalid){
     this.formGroup.markAllAsTouched();
     return;
   }
   // this.formGroup.reset();
   const save: any = {
-    nomseminario:name.nomseminario,
-    semiFecha:name.semiFecha,
-    servicioEspiritual:name.servicioEspiritual
+    nomseminario:       name.nomseminario,
+    semiFecha:          name.semiFecha,
+    servicioEspiritual: name.servicioEspiritual,
   };
-
-  this.seminarioService.add$(save).subscribe(response => {
+  this.SeminarioService.add$(save).subscribe(response => {
     if (response.success) {
       this.activeModal.close({ success: true, message: response.message });
     } else {
@@ -74,9 +76,9 @@ update(name: any): void {
     idSeminario:this.idSeminario,
     nomseminario:name.nomseminario,
     semiFecha:name.semiFecha,
-    servicioEspiritual:name.ServicioEspiritual,
+    servicioEspiritual:name.servicioEspiritual,
   }
-  this.seminarioService.update$(this.idSeminario, save).subscribe(response => {
+  this.SeminarioService.update$(this.idSeminario, save).subscribe(response => {
     if (response.success) {
       this.activeModal.close({ success: true, message: response.message });
     } else {
@@ -89,9 +91,9 @@ updateData(): any {
   this.isUpdating = true;
   this.idSeminario = data.idSeminario;
   this.formGroup.patchValue({
-    nomseminario:data.nomseminario,
-    semiFecha:data.semiFecha,
-    servicioEspiritual:data.servicioEspiritual,
+    nomseminario: data.nomseminario,
+    semiFecha: data.semiFecha,
+    servicioEspiritual: data.servicioEspiritual,
   });
 }
 
@@ -103,5 +105,6 @@ validaForm(campo: string) {
   return this.formGroup.controls[campo].errors &&
     this.formGroup.controls[campo].touched;
 }
+
 
 }

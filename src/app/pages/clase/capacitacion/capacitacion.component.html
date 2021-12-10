@@ -70,7 +70,7 @@
               <td>{{capacitacion.nomCapaciatacion}}</td>
               <td>{{capacitacion.modulos}}</td>
               <td>{{capacitacion.sesiones}}</td>
-              <td>{{capacitacion.materiales}}</td>
+              <td>{{capacitacion.materiales  | date: 'dd/MM/yyyy'}}</td>
 
               <td >
                 <button type="button" class="btn btn-warning" (click)="openModalEdit(capacitacion)">Editar</button>
