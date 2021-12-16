@@ -7,5 +7,7 @@ export const END_POINTS = {
     capacitacion: 'capacitacion',
     seminario: 'seminario',
     socia: 'socia',
+    user: 'user',
+    lisc: 'lisc',
   }
 };

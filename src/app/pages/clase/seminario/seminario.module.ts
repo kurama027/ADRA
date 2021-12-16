@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ReactiveFormsModule} from "@angular/forms";
 
-import { CapacitacionService } from 'src/app/providers/services/capacitacion.service';
 import { FormComponent } from './form/form.component';
 import { SeminarioComponent } from './seminario.component';
 import { SeminarioService } from 'src/app/providers/services/seminario.service';
