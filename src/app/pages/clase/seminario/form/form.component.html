@@ -15,18 +15,30 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Oracion</label>
+        <label class="col-sm-3 col-form-label">Descripcion</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" formControlName="des">
+          <span class="form-text text-danger" *ngIf="validaForm('des')">Ingrese Descripcion</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Enlace</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" formControlName="servicioEspiritual">
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Fecha</label>
+        <label class="col-sm-3 col-form-label">Fecha de inicio</label>
         <div class="col-sm-9">
           <input type="date" class="form-control" formControlName="semiFecha">
         </div>
       </div>
-
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Fecha de fin</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" formControlName="semiFechafin">
+        </div>
+      </div>
     </form>
 
   </form>

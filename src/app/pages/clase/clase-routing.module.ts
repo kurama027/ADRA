@@ -16,7 +16,8 @@ const routes: Routes = [
         path: 'seminario',
         loadChildren: () => import('src/app/pages/clase/seminario/seminario.module')
           .then(m => m.SeminarioModule),
-      }
+      },
+
     ]
   }
 ];

@@ -6,5 +6,6 @@ export const END_POINTS = {
   admin: {
     capacitacion: 'capacitacion',
     seminario: 'seminario',
+    socia: 'socia',
   }
 };

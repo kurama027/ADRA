@@ -5,6 +5,9 @@ import { CapacitacionComponent } from './capacitacion.component';
 import { CapacitacionRoutingModule } from './capacitacion-routing.module';
 import { CapacitacionService } from 'src/app/providers/services/capacitacion.service';
 import { FormComponent } from './form/form.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -16,7 +19,10 @@ import { FormComponent } from './form/form.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    CapacitacionRoutingModule
+    CapacitacionRoutingModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatIconModule
   ],
   providers: [CapacitacionService], // Los servicios se ponen en providers
 })

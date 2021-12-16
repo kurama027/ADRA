@@ -38,7 +38,9 @@ export class FormComponent implements OnInit {
     const controls = {
       // idEmployee: ['', [Validators.required]],
       nomseminario: ['', [Validators.required]],
+      des: [''],
       semiFecha: [''],
+      semiFechafin: [''],
       servicioEspiritual: [''],
 
     };
@@ -55,7 +57,9 @@ save(name: any): void {
   // this.formGroup.reset();
   const save: any = {
     nomseminario:       name.nomseminario,
+    des:       name.des,
     semiFecha:          name.semiFecha,
+    semiFechafin:          name.semiFechafin,
     servicioEspiritual: name.servicioEspiritual,
   };
   this.SeminarioService.add$(save).subscribe(response => {
@@ -75,7 +79,9 @@ update(name: any): void {
   const save: any = {
     idSeminario:this.idSeminario,
     nomseminario:name.nomseminario,
+    des:name.des,
     semiFecha:name.semiFecha,
+    semiFechafin:name.semiFechafin,
     servicioEspiritual:name.servicioEspiritual,
   }
   this.SeminarioService.update$(this.idSeminario, save).subscribe(response => {
@@ -92,7 +98,9 @@ updateData(): any {
   this.idSeminario = data.idSeminario;
   this.formGroup.patchValue({
     nomseminario: data.nomseminario,
+    des: data.des,
     semiFecha: data.semiFecha,
+    semiFechafin: data.semiFechafin,
     servicioEspiritual: data.servicioEspiritual,
   });
 }

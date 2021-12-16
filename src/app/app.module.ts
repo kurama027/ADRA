@@ -14,11 +14,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './core/main-page/header/header.component';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+
   ],
   imports: [
     CommonModule,
@@ -28,7 +35,16 @@ import { CoreModule } from './core/core.module';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule
   ],
 
 

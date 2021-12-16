@@ -1,35 +1,44 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {EntityDataService} from "../utils/entity-data.service";
 import {END_POINTS} from "../utils/end-points";
 import { IResponse } from '../utils/responses';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CapacitacionService  extends EntityDataService<IResponse>{
 
+   //Url obtenida de la variable de enviroments
+  baseUrl = environment.baseUrl;
+
   constructor(protected httpClient: HttpClient) {
     super(httpClient, END_POINTS.api+END_POINTS.admin.capacitacion);
   }
-/*
-  private apiUrl: string = "http://localhost:8080/api/employee";
 
-  constructor(private httpClient: HttpClient) { }
+//Metodo que envia los archivos al endpoint /upload
+upload(file: File): Observable<HttpEvent<any>>{
+  const formData: FormData = new FormData();
+  formData.append('files', file);
 
-  listar(): Observable<IResponse>{
-    const url = this.apiUrl;
-    return this.httpClient.get<IResponse>(url);
-  }
+  const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    reportProgress: true,
+    responseType: 'json'
+  });
+  return this.httpClient.request(req);
+}
 
-  public addNameData$(serviceName: any, data: any): Observable<IResponse> {
-    // return this.httpClient.post<IResponse>(`${serviceName}`, data);
-    return this.httpClient.post<IResponse>(this.apiUrl, data);
-  }
+//Metodo para Obtener los archivos
+getFiles(){
+  return this.httpClient.get(`${this.baseUrl}/files`);
+}
 
-  public updateNameIdData$(serviceName: any, id: any, data: any): Observable<IResponse> {
-    //return this.httpClient.put<IResponse>(`${this.endPoint}/${serviceName}/${id}`, data);
-    return this.httpClient.put<IResponse>(`${this.apiUrl}/${id}`, data);
-  }*/
+//Metodo para borrar los archivos
+deleteFile(filename: string){
+  return this.httpClient.get(`${this.baseUrl}/delete/${filename}`);
+}
+
+
 }

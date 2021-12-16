@@ -41,7 +41,8 @@ export class FormComponent implements OnInit {
       modulos: ['', [Validators.required]],
       sesiones: [''],
       materiales: [''],
-
+      capaFecha: [''],
+      capaFechafin: [''],
     };
     this.formGroup = this.formBuilder.group(controls);
 
@@ -57,7 +58,9 @@ save(name: any): void {
     nomCapaciatacion:name.nomCapaciatacion,
     modulos:name.modulos,
     sesiones:name.sesiones,
-    materiales:name.materiales
+    materiales:name.materiales,
+    capaFecha:name.capaFecha,
+    capaFechafin:name.capaFechafin
   };
   this.capacitacionService.add$(save).subscribe(response => {
     if (response.success) {
@@ -78,7 +81,10 @@ update(name: any): void {
     nomCapaciatacion:name.nomCapaciatacion,
     modulos:name.modulos,
     sesiones:name.sesiones,
-    materiales:name.materiales
+    materiales:name.materiales,
+    capaFecha:name.capaFecha,
+    capaFechafin:name.capaFechafin,
+
   }
   this.capacitacionService.update$(this.idCapacitacion, save).subscribe(response => {
     if (response.success) {
@@ -96,7 +102,10 @@ updateData(): any {
     nomCapaciatacion: data.nomCapaciatacion,
     modulos: data.modulos,
     sesiones: data.sesiones,
-    materiales: data.materiales
+    materiales: data.materiales,
+    capaFecha: data.capaFecha,
+    capaFechafin: data.capaFechafin
+
   });
 }
 
@@ -108,5 +117,7 @@ validaForm(campo: string) {
   return this.formGroup.controls[campo].errors &&
     this.formGroup.controls[campo].touched;
 }
+
+
 
 }
